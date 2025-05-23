@@ -1,0 +1,106 @@
+-- Insert Suppliers from Tunisia
+INSERT INTO supplier (name, contact_person, email, phone, address, notes) VALUES
+('Nabeul Olive Oil Co.', 'Ahmed Ben Ali', 'ahmed@nabeulolive.tn', '+216 72 123 456', 'Rue de l''Huile 45, Nabeul, Tunisia', 'Premium olive oil supplier from Nabeul region'),
+('Kelibia Seafood', 'Sami Mansour', 'contact@kelibiafish.tn', '+216 72 987 654', 'Port de Pêche, Kelibia, Tunisia', 'Fresh seafood from Kelibia coast'),
+('Tunisian Pottery Works', 'Leila Trabelsi', 'info@tunisianpottery.com', '+216 72 456 789', 'Zone Artisanale, Nabeul, Tunisia', 'Traditional pottery and ceramics'),
+('Cap Bon Agrumes', 'Karim Belhaj', 'sales@capbonagrumes.tn', '+216 72 234 567', 'Route de Hammamet, Nabeul, Tunisia', 'Citrus fruits from Cap Bon region'),
+('Kelibia Textiles', 'Fatma Gharbi', 'fatma@kelibiatextiles.tn', '+216 72 345 678', 'Zone Industrielle, Kelibia, Tunisia', 'Traditional Tunisian textiles and clothing');
+
+-- Insert Products
+INSERT INTO product (name, description, price, stock, category) VALUES
+('Extra Virgin Olive Oil 1L', 'Premium olive oil from Nabeul region', 25.99, 200, 'Grocery'),
+('Olive Oil Soap', 'Handmade soap with Nabeul olive oil', 5.99, 300, 'Personal Care'),
+('Fresh Sea Bass', 'Caught daily from Kelibia waters', 18.50, 50, 'Seafood'),
+('Grilled Sardines', 'Traditional Kelibia style', 12.99, 40, 'Seafood'),
+('Decorative Plate', 'Hand-painted ceramic plate from Nabeul', 35.00, 75, 'Home Decor'),
+('Ceramic Tagine', 'Traditional cooking pot', 45.00, 60, 'Kitchenware'),
+('Nabeul Oranges 5kg', 'Sweet oranges from Cap Bon', 8.99, 150, 'Grocery'),
+('Lemon Preserve', 'Traditional preserved lemons', 7.50, 100, 'Grocery'),
+('Traditional Fouta', 'Handwoven cotton beach towel', 15.00, 120, 'Home Textiles'),
+('Embroidered Cushion Cover', 'Traditional Tunisian design', 22.50, 80, 'Home Textiles');
+
+-- Insert Customers from Tunisia
+INSERT INTO customer (name, email, address) VALUES
+('Mohamed Aziz', 'mohamed@example.com', 'Rue Ibn Khaldoun 23, Nabeul, Tunisia'),
+('Amina Belhadj', 'amina@example.com', 'Avenue Habib Bourguiba 45, Kelibia, Tunisia'),
+('Youssef Triki', 'youssef@example.com', 'Rue des Orangers 12, Hammamet, Tunisia'),
+('Salma Karoui', 'salma@example.com', 'Rue de la Plage 8, Kelibia, Tunisia'),
+('Nizar Mejri', 'nizar@example.com', 'Avenue de la République 34, Nabeul, Tunisia');
+
+-- Insert Carriers
+INSERT INTO carrier (name, phone, note) VALUES
+('Kelibia Express', '+216 72 111 222', 'Local delivery service in Kelibia area'),
+('Nabeul Logistics', '+216 72 333 444', 'Specializes in Nabeul region deliveries'),
+('Tunisia Post', '+216 71 888 999', 'National postal service'),
+('Cap Bon Delivery', '+216 72 555 666', 'Regional delivery service for Cap Bon peninsula'),
+('Rapid Courier', '+216 72 777 888', 'Express delivery service');
+
+-- Insert Orders
+INSERT INTO orders (customer_id, date, status, total_amount) VALUES
+(1, '2025-05-10', 'DELIVERED', 57.98),
+(2, '2025-05-15', 'DELIVERED', 45.00),
+(3, '2025-05-18', 'PROCESSING', 31.99),
+(4, '2025-05-20', 'IN_DELIVERY', 63.50),
+(5, '2025-05-22', 'PENDING', 37.50);
+
+-- Insert OrderLines
+INSERT INTO order_line (order_id, product_id, quantity, unit_price) VALUES
+(1, 1, 2, 25.99),
+(1, 2, 1, 5.99),
+(2, 6, 1, 45.00),
+(3, 7, 2, 8.99),
+(3, 8, 2, 7.50),
+(4, 3, 2, 18.50),
+(4, 5, 1, 35.00),
+(5, 9, 1, 15.00),
+(5, 10, 1, 22.50);
+
+-- Insert Deliveries
+INSERT INTO delivery (order_id, carrier_id, delivery_date, cost, status) VALUES
+(1, 2, '2025-05-12', 8.50, 'DELIVERED'),
+(2, 1, '2025-05-17', 7.00, 'DELIVERED'),
+(3, 4, '2025-05-23', 9.00, 'IN_TRANSIT'),
+(4, 3, '2025-05-25', 10.50, 'IN_TRANSIT'),
+(5, 5, '2025-05-27', 12.00, 'SCHEDULED');
+
+-- Insert Payments
+INSERT INTO payment (order_id, date, method, status) VALUES
+(1, '2025-05-10', 'CREDIT_CARD', 'COMPLETED'),
+(2, '2025-05-15', 'CASH', 'COMPLETED'),
+(3, '2025-05-18', 'BANK_TRANSFER', 'COMPLETED'),
+(4, '2025-05-20', 'CREDIT_CARD', 'COMPLETED'),
+(5, '2025-05-22', 'CASH_ON_DELIVERY', 'PENDING');
+
+-- Insert Tracking History
+INSERT INTO tracking_history (order_id, delivery_status, description, order_status, timestamp) VALUES
+(1, 'PICKED_UP', 'Package picked up from supplier in Nabeul Warehouse', 'PROCESSING', '2025-05-11 09:30:00'),
+(1, 'IN_TRANSIT', 'Package in transit through Nabeul Distribution Center', 'PROCESSING', '2025-05-11 14:45:00'),
+(1, 'DELIVERED', 'Package delivered successfully to Customer Address', 'DELIVERED', '2025-05-12 11:20:00'),
+(2, 'PICKED_UP', 'Package picked up from supplier in Kelibia Warehouse', 'PROCESSING', '2025-05-16 10:15:00'),
+(2, 'DELIVERED', 'Package delivered successfully to Customer Address', 'DELIVERED', '2025-05-17 13:40:00'),
+(3, 'PICKED_UP', 'Package picked up from supplier in Cap Bon Distribution Center', 'PROCESSING', '2025-05-21 08:45:00'),
+(3, 'IN_TRANSIT', 'Package in transit through Hammamet Sorting Facility', 'IN_DELIVERY', '2025-05-22 16:30:00'),
+(4, 'PICKED_UP', 'Package picked up from supplier in Kelibia Port Facility', 'PROCESSING', '2025-05-21 11:20:00'),
+(4, 'IN_TRANSIT', 'Package in transit through Nabeul Distribution Center', 'IN_DELIVERY', '2025-05-22 14:15:00'),
+(5, 'PENDING', 'Pickup scheduled from Kelibia Warehouse', 'CONFIRMED', '2025-05-22 17:00:00');
+
+-- Create payments table
+CREATE TABLE IF NOT EXISTS payments (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    order_id BIGINT NOT NULL,
+    amount DECIMAL(10, 2) NOT NULL,
+    status VARCHAR(20) NOT NULL,
+    method VARCHAR(20) NOT NULL,
+    payment_date DATE NOT NULL,
+    customer_name VARCHAR(100),
+    reference VARCHAR(50),
+    FOREIGN KEY (order_id) REFERENCES orders(id)
+);
+
+-- Insert payment data
+INSERT INTO payments (id, order_id, payment_date, method, status, amount, customer_name, reference) VALUES
+(1, 1, '2025-05-10', 'CREDIT_CARD', 'COMPLETED', 245.99, 'John Smith', 'PAY-1001-XYZ'),
+(2, 2, '2025-05-15', 'CASH', 'COMPLETED', 125.50, 'Sarah Johnson', 'PAY-1002-ABC'),
+(3, 3, '2025-05-18', 'BANK_TRANSFER', 'COMPLETED', 78.25, 'Michael Brown', 'PAY-1003-DEF'),
+(4, 4, '2025-05-20', 'CREDIT_CARD', 'COMPLETED', 320.00, 'Emily Wilson', 'PAY-1004-GHI'),
+(5, 5, '2025-05-22', 'CASH_ON_DELIVERY', 'PENDING', 95.75, 'David Lee', 'PAY-1005-JKL');
